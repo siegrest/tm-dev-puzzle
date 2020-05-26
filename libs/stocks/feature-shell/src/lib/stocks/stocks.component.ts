@@ -13,6 +13,7 @@ export class StocksComponent implements OnInit {
   period: string;
 
   quotes$ = this.priceQuery.priceQueries$;
+  inProgress$ = this.priceQuery.requestInProgress$;
 
   timePeriods = [
     { viewValue: 'All available data', value: 'max' },

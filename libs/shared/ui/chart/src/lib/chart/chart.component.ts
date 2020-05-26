@@ -11,7 +11,7 @@ export class ChartComponent implements OnInit, OnDestroy {
   private subscription: Subscription;
 
   chart = {
-    title: '',
+    title: 'Stocks chart',
     type: 'LineChart',
     data: [],
     columnNames: ['period', 'close'],
