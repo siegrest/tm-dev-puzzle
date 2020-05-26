@@ -15,7 +15,6 @@ export class StocksComponent implements OnInit, OnDestroy {
   period: string;
 
   quotes$ = this.priceQuery.priceQueries$;
-  inProgress$ = this.priceQuery.requestInProgress$;
   formChanged: Subscription;
 
   timePeriods = [
