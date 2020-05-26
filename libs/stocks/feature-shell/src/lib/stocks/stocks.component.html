@@ -1,28 +1,17 @@
 <form [formGroup]="stockPickerForm" aria-label="Stocks form" aria-labelledby="Search parameters for stocks graph">
   <mat-form-field>
     <mat-label>Symbol e.g AAPL</mat-label>
-    <input matInput formControlName="symbol"/>
-    <mat-error *ngIf="!stockPickerForm.get('symbol').valid && stockPickerForm.get('symbol').touched">
+    <input matInput formControlName="symbol" />
+    <mat-error *ngIf="isInvalidField('symbol')">
       <span>Please enter a symbol</span>
     </mat-error>
   </mat-form-field>
-
-  <mat-form-field>
-    <mat-label>Time period</mat-label>
-    <mat-select formControlName="period">
-      <mat-option *ngFor="let timePeriod of timePeriods" [value]="timePeriod.value">
-        {{ timePeriod.viewValue }}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
-
-  <button [disabled]="inProgress$ | async" (click)="fetchQuote()" mat-raised-button color="primary">
-    Load chart
-  </button>
 </form>
 
+<coding-challenge-datepicker (dateChanged)="dateRangeChanged($event)"></coding-challenge-datepicker>
+
 <div class="center">
-  <mat-spinner [diameter]="36" *ngIf="inProgress$ | async" aria-label="Chart is loading"></mat-spinner>
+  <mat-spinner [diameter]="36" *ngIf="inProgress$ | async" aria-label="Data is loading"></mat-spinner>
 
   <coding-challenge-chart [data$]="quotes$"></coding-challenge-chart>
 </div>

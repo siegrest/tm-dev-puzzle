@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Inject, Injectable } from '@angular/core';
+import { Inject } from '@angular/core';
 import {
   StocksAppConfig,
   StocksAppConfigToken
@@ -13,24 +13,32 @@ import {
   PriceQueryFetched,
   PriceQueryFetchError
 } from './price-query.actions';
-import { PriceQueryPartialState } from './price-query.reducer';
+import {
+  PriceQueryPartialState
+} from './price-query.reducer';
 import { PriceQueryResponse } from './price-query.type';
 import { MatSnackBar } from '@angular/material';
+import { filterResults } from '../util/filter-util';
+import { getSmallestRange } from '../util/date-util';
 
-@Injectable()
 export class PriceQueryEffects {
   @Effect() loadPriceQuery$ = this.dataPersistence.fetch(
     PriceQueryActionTypes.FetchPriceQuery,
     {
       run: (action: FetchPriceQuery, state: PriceQueryPartialState) => {
+        const range = getSmallestRange(action.from);
         return this.httpClient
           .get(
-            `${this.env.apiURL}/beta/stock/${action.symbol}/chart/${
-              action.period
-            }?token=${this.env.apiKey}`
+            `${this.env.apiURL}/beta/stock/${
+              action.symbol
+            }/chart/${range}?token=${this.env.apiKey}`
           )
           .pipe(
-            map(resp => new PriceQueryFetched(resp as PriceQueryResponse[]))
+            map((resp: PriceQueryResponse[]) => {
+              return new PriceQueryFetched(
+                filterResults(resp, action.from, action.to)
+              );
+            })
           );
       },
 

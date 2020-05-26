@@ -2,6 +2,8 @@ import { PriceQueryAction, PriceQueryActionTypes } from './price-query.actions';
 import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
 import { PriceQuery } from './price-query.type';
 import { transformPriceQueryResponse } from './price-query-transformer.util';
+import { RANGE } from './price-query.ranges';
+import { getSmallestRange } from '../util/date-util';
 
 export const PRICEQUERY_FEATURE_KEY = 'priceQuery';
 

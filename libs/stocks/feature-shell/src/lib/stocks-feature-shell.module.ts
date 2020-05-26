@@ -6,12 +6,15 @@ import {
   MatSelectModule,
   MatButtonModule,
   MatProgressSpinnerModule,
-  MAT_PROGRESS_SPINNER_DEFAULT_OPTIONS
+  MAT_PROGRESS_SPINNER_DEFAULT_OPTIONS,
+  MatDatepickerModule,
+  MatNativeDateModule
 } from '@angular/material';
 import { RouterModule } from '@angular/router';
 import { SharedUiChartModule } from '@coding-challenge/shared/ui/chart';
 import { StocksComponent } from './stocks/stocks.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { SharedUiDatepickertModule } from '../../../../shared/ui/datepicker/src/lib/shared-ui-datepicker.module';
 
 @NgModule({
   imports: [
@@ -25,7 +28,10 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatSelectModule,
     MatButtonModule,
     SharedUiChartModule,
-    MatProgressSpinnerModule
+    SharedUiDatepickertModule,
+    MatProgressSpinnerModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   declarations: [StocksComponent],
   providers: [

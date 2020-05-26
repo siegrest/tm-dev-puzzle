@@ -8,7 +8,7 @@ import { Observable, Subscription } from 'rxjs';
 })
 export class ChartComponent implements OnInit, OnDestroy {
   @Input() data$: Observable<[string | number][]>;
-  private subscription: Subscription;
+  private chartDataChange: Subscription;
 
   chart = {
     title: 'Stocks chart',
@@ -21,14 +21,14 @@ export class ChartComponent implements OnInit, OnDestroy {
   constructor() {}
 
   ngOnInit() {
-    this.subscription = this.data$
+    this.chartDataChange = this.data$
       ? this.data$.subscribe(newData => (this.chart.data = newData))
       : null;
   }
 
   ngOnDestroy() {
-    if (this.subscription) {
-      this.subscription.unsubscribe();
+    if (this.chartDataChange) {
+      this.chartDataChange.unsubscribe();
     }
   }
 }
