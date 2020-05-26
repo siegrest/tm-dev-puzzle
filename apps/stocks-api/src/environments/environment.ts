@@ -1,7 +1,16 @@
-// This file can be replaced during build by using the `fileReplacements` array.
-// `ng build ---prod` replaces `environment.ts` with `environment.prod.ts`.
-// The list of file replacements can be found in `angular.json`.
+import { EnvConf } from '../app/config.type';
 
-export const environment = {
-  production: false
+export const environment: EnvConf = {
+  production: false,
+  server: {
+    host: 'localhost',
+    port: 3333
+  },
+  api: {
+    key: '',
+    URL: 'https://sandbox.iexapis.com',
+    origin: 'http://localhost:4200',
+    expiresIn: 60000,
+    generateTimeout: 5000
+  }
 };

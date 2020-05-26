@@ -3,22 +3,28 @@
  * This is only a minimal backend to get started.
  **/
 import { Server } from 'hapi';
+import { fetchStocksPlugin } from './app/plugins/methods/stocks-fetch.method';
+import { stocksRoutePlugin } from './app/plugins/routes/stocks-client.route';
+import { environment as env } from './environments/environment';
 
 const init = async () => {
   const server = new Server({
-    port: 3333,
-    host: 'localhost'
+    port: env.server.port,
+    host: env.server.host
   });
 
-  server.route({
-    method: 'GET',
-    path: '/',
-    handler: (request, h) => {
-      return {
-        hello: 'world'
-      };
+  await server.register([
+    {
+      plugin: stocksRoutePlugin,
+      options: {
+        origin: env.api.origin
+      }
+    },
+    {
+      plugin: fetchStocksPlugin,
+      options: env.api
     }
-  });
+  ]);
 
   await server.start();
   console.log('Server running on %s', server.info.uri);

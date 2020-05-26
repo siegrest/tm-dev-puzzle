@@ -29,9 +29,7 @@ export class PriceQueryEffects {
         const range = getSmallestRange(action.from);
         return this.httpClient
           .get(
-            `${this.env.apiURL}/beta/stock/${
-              action.symbol
-            }/chart/${range}?token=${this.env.apiKey}`
+            `${this.env.apiURL}/stocks/${action.symbol}/${range}`
           )
           .pipe(
             map((resp: PriceQueryResponse[]) => {
