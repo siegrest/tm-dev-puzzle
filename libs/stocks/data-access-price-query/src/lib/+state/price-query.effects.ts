@@ -15,6 +15,7 @@ import {
 } from './price-query.actions';
 import { PriceQueryPartialState } from './price-query.reducer';
 import { PriceQueryResponse } from './price-query.type';
+import { MatSnackBar } from '@angular/material';
 
 @Injectable()
 export class PriceQueryEffects {
@@ -34,6 +35,10 @@ export class PriceQueryEffects {
       },
 
       onError: (action: FetchPriceQuery, error) => {
+        this.snackBar.open('Unable to load data', 'Ok', {
+          duration: 7000
+        });
+
         return new PriceQueryFetchError(error);
       }
     }
@@ -42,6 +47,7 @@ export class PriceQueryEffects {
   constructor(
     @Inject(StocksAppConfigToken) private env: StocksAppConfig,
     private httpClient: HttpClient,
-    private dataPersistence: DataPersistence<PriceQueryPartialState>
+    private dataPersistence: DataPersistence<PriceQueryPartialState>,
+    private snackBar: MatSnackBar
   ) {}
 }

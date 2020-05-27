@@ -1,35 +1,28 @@
-<form [formGroup]="stockPickerForm">
+<form [formGroup]="stockPickerForm" aria-label="Stocks form" aria-labelledby="Search parameters for stocks graph">
   <mat-form-field>
-    <input
-      matInput
-      placeholder="Symbol e.g AAPL"
-      formControlName="symbol"
-      value=""
-    />
-    <mat-error
-      ><span
-        *ngIf="
-          !stockPickerForm.get('symbol').valid &&
-          stockPickerForm.get('symbol').touched
-        "
-        >Please enter a symbol</span
-      >
+    <mat-label>Symbol e.g AAPL</mat-label>
+    <input matInput formControlName="symbol"/>
+    <mat-error *ngIf="!stockPickerForm.get('symbol').valid && stockPickerForm.get('symbol').touched">
+      <span>Please enter a symbol</span>
     </mat-error>
   </mat-form-field>
 
   <mat-form-field>
-    <mat-label>Favorite time period</mat-label>
+    <mat-label>Time period</mat-label>
     <mat-select formControlName="period">
-      <mat-option
-        *ngFor="let timePeriod of timePeriods"
-        [value]="timePeriod.value"
-      >
+      <mat-option *ngFor="let timePeriod of timePeriods" [value]="timePeriod.value">
         {{ timePeriod.viewValue }}
       </mat-option>
     </mat-select>
   </mat-form-field>
 
-  <button (click)="fetchQuote()" mat-raised-button>Go</button>
+  <button [disabled]="inProgress$ | async" (click)="fetchQuote()" mat-raised-button color="primary">
+    Load chart
+  </button>
 </form>
 
-<coding-challenge-chart [data$]="quotes$"></coding-challenge-chart>
+<div class="center">
+  <mat-spinner [diameter]="36" *ngIf="inProgress$ | async" aria-label="Chart is loading"></mat-spinner>
+
+  <coding-challenge-chart [data]="quotes$ | async"></coding-challenge-chart>
+</div>

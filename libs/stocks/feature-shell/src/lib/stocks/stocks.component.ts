@@ -9,10 +9,8 @@ import { PriceQueryFacade } from '@coding-challenge/stocks/data-access-price-que
 })
 export class StocksComponent implements OnInit {
   stockPickerForm: FormGroup;
-  symbol: string;
-  period: string;
-
   quotes$ = this.priceQuery.priceQueries$;
+  inProgress$ = this.priceQuery.requestInProgress$;
 
   timePeriods = [
     { viewValue: 'All available data', value: 'max' },
