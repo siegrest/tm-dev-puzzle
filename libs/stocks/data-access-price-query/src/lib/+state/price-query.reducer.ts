@@ -2,11 +2,14 @@ import { PriceQueryAction, PriceQueryActionTypes } from './price-query.actions';
 import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
 import { PriceQuery } from './price-query.type';
 import { transformPriceQueryResponse } from './price-query-transformer.util';
+import { RANGE } from './price-query.ranges';
+import { getSmallestRange } from '../util/date-util';
 
 export const PRICEQUERY_FEATURE_KEY = 'priceQuery';
 
 export interface PriceQueryState extends EntityState<PriceQuery> {
   selectedSymbol: string;
+  inProgress: boolean;
 }
 
 export function sortByDateNumeric(a: PriceQuery, b: PriceQuery): number {
@@ -25,7 +28,8 @@ export interface PriceQueryPartialState {
 }
 
 export const initialState: PriceQueryState = priceQueryAdapter.getInitialState({
-  selectedSymbol: ''
+  selectedSymbol: '',
+  inProgress: false
 });
 
 export function priceQueryReducer(
@@ -34,16 +38,28 @@ export function priceQueryReducer(
 ): PriceQueryState {
   switch (action.type) {
     case PriceQueryActionTypes.PriceQueryFetched: {
-      return priceQueryAdapter.addAll(
-        transformPriceQueryResponse(action.queryResults),
-        state
-      );
+      return {
+        ...priceQueryAdapter.addAll(
+          transformPriceQueryResponse(action.queryResults),
+          state
+        ),
+        inProgress: false
+      };
     }
+
     case PriceQueryActionTypes.SelectSymbol: {
       return {
         ...state,
         selectedSymbol: action.symbol
       };
+    }
+
+    case PriceQueryActionTypes.FetchPriceQuery: {
+      return { ...state, selectedSymbol: action.symbol, inProgress: true };
+    }
+
+    case PriceQueryActionTypes.PriceQueryFetchError: {
+      return { ...state, inProgress: false };
     }
   }
   return state;
