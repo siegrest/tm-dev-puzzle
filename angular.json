@@ -332,6 +332,105 @@
         }
       },
       "schematics": {}
+    },
+    "stocks-api-data-access-app-config": {
+      "root": "libs/stocks-api/data-access-app-config",
+      "sourceRoot": "libs/stocks-api/data-access-app-config/src",
+      "projectType": "library",
+      "prefix": "coding-challenge",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "libs/stocks-api/data-access-app-config/tsconfig.lib.json",
+            "project": "libs/stocks-api/data-access-app-config/ng-package.json"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/stocks-api/data-access-app-config/tsconfig.lib.json",
+              "libs/stocks-api/data-access-app-config/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "libs/stocks-api/data-access-app-config/jest.config.js",
+            "tsConfig": "libs/stocks-api/data-access-app-config/tsconfig.spec.json"
+          }
+        }
+      },
+      "schematics": {}
+    },
+    "stocks-api-data-access-routes": {
+      "root": "libs/stocks-api/data-access-routes",
+      "sourceRoot": "libs/stocks-api/data-access-routes/src",
+      "projectType": "library",
+      "prefix": "coding-challenge",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "libs/stocks-api/data-access-routes/tsconfig.lib.json",
+            "project": "libs/stocks-api/data-access-routes/ng-package.json"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/stocks-api/data-access-routes/tsconfig.lib.json",
+              "libs/stocks-api/data-access-routes/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "libs/stocks-api/data-access-routes/jest.config.js",
+            "tsConfig": "libs/stocks-api/data-access-routes/tsconfig.spec.json"
+          }
+        }
+      },
+      "schematics": {}
+    },
+    "stocks-api-data-access-methods": {
+      "root": "libs/stocks-api/data-access-methods",
+      "sourceRoot": "libs/stocks-api/data-access-methods/src",
+      "projectType": "library",
+      "prefix": "coding-challenge",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "libs/stocks-api/data-access-methods/tsconfig.lib.json",
+            "project": "libs/stocks-api/data-access-methods/ng-package.json"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/stocks-api/data-access-methods/tsconfig.lib.json",
+              "libs/stocks-api/data-access-methods/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "libs/stocks-api/data-access-methods/jest.config.js",
+            "tsConfig": "libs/stocks-api/data-access-methods/tsconfig.spec.json"
+          }
+        }
+      },
+      "schematics": {}
     }
   },
   "cli": {

@@ -31,6 +31,15 @@
     },
     "shared-ui-datepicker": {
       "tags": []
+    },
+    "stocks-api-data-access-app-config": {
+      "tags": ["type:data-access", "scope:stocks-api", "platform:server"]
+    },
+    "stocks-api-data-access-routes": {
+      "tags": ["type:data-access", "scope:stocks-api", "platform:server"]
+    },
+    "stocks-api-data-access-methods": {
+      "tags": ["type:data-access", "scope:stocks-api", "platform:server"]
     }
   }
 }

@@ -1,7 +1,7 @@
 import * as requestNative from 'request-promise-native';
 import { Subject } from 'rxjs';
 import { Server } from 'hapi';
-import { EnvConfApi } from '../../config.type';
+import { EnvConfApi } from '@coding-challenge/stocks-api/data-access-app-config';
 
 export const fetchStocksPlugin = {
   name: 'fetchStocks',

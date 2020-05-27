@@ -3,8 +3,8 @@
  * This is only a minimal backend to get started.
  **/
 import { Server } from 'hapi';
-import { fetchStocksPlugin } from './app/plugins/methods/stocks-fetch.method';
-import { stocksRoutePlugin } from './app/plugins/routes/stocks-client.route';
+import { fetchStocksPlugin } from '@coding-challenge/stocks-api/data-access-methods';
+import { stocksRoutePlugin } from '@coding-challenge/stocks-api/data-access-routes';
 import { environment as env } from './environments/environment';
 
 const init = async () => {

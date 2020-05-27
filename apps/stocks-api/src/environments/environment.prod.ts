@@ -1,4 +1,4 @@
-import { EnvConf } from '../app/config.type';
+import { EnvConf } from '@coding-challenge/stocks-api/data-access-app-config';
 
 export const environment: EnvConf = {
   production: true,

@@ -29,6 +29,15 @@
       ],
       "@coding-challenge/shared/ui/datepicker": [
         "libs/shared/ui/datepicker/src/index.ts"
+      ],
+      "@coding-challenge/stocks-api/data-access-app-config": [
+        "libs/stocks-api/data-access-app-config/src/index.ts"
+      ],
+      "@coding-challenge/stocks-api/data-access-routes": [
+        "libs/stocks-api/data-access-routes/src/index.ts"
+      ],
+      "@coding-challenge/stocks-api/data-access-methods": [
+        "libs/stocks-api/data-access-methods/src/index.ts"
       ]
     }
   },
