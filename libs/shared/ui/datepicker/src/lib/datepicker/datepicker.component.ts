@@ -41,23 +41,17 @@ export class DatepickerComponent implements OnInit, OnDestroy {
     this.valueChanged.unsubscribe();
   }
 
-  fromDateRangeFilter = (d = new Date()): boolean => {
-    const { to } = this.datePickerForm.value;
-    return (to ? d <= to : true) && d <= new Date();
-  };
-
-  toDateRangeFilter = (d = new Date()): boolean => {
-    const { from } = this.datePickerForm.value;
-    return (from ? d >= from : true) && d <= new Date();
+  dateRangeFilter = (d: Date): boolean => {
+    const now = new Date();
+    now.setHours(0, 0, 0, 0);
+    return d <= now;
   };
 
   validateDate = (e: MatDatepickerInputEvent<Date>): void => {
     const from = this.datePickerForm.get('from');
     const to = this.datePickerForm.get('to');
 
-    if (!from.valid && from.touched && to.valid && to.touched) {
-      from.setValue(to.value);
-    } else if (!to.valid && to.touched && from.valid && from.touched) {
+    if (from.value && to.value && to.value < from.value) {
       to.setValue(from.value);
     }
   };
