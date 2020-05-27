@@ -13,8 +13,8 @@ import { DateRange } from '@coding-challenge/shared/ui/datepicker';
 export class StocksComponent implements OnInit, OnDestroy {
   stockPickerForm: FormGroup;
   quotes$ = this.priceQuery.priceQueries$;
-  inProgress$ = this.priceQuery.requestInProgress$;
   formChanged: Subscription;
+  inProgress$ = this.priceQuery.requestInProgress$;
   range: DateRange = { from: null, to: null };
 
   constructor(private fb: FormBuilder, private priceQuery: PriceQueryFacade) {

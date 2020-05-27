@@ -6,7 +6,6 @@ import {
   MatSelectModule,
   MatButtonModule,
   MatProgressSpinnerModule,
-  MAT_PROGRESS_SPINNER_DEFAULT_OPTIONS,
   MatDatepickerModule,
   MatNativeDateModule
 } from '@angular/material';
@@ -33,14 +32,6 @@ import { SharedUiDatepickertModule } from '@coding-challenge/shared/ui/datepicke
     MatDatepickerModule,
     MatNativeDateModule
   ],
-  declarations: [StocksComponent],
-  providers: [
-    {
-      provide: MAT_PROGRESS_SPINNER_DEFAULT_OPTIONS,
-      useValue: {
-        _forceAnimations: true
-      }
-    }
-  ]
+  declarations: [StocksComponent]
 })
 export class StocksFeatureShellModule {}
