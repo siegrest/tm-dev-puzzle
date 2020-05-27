@@ -14,7 +14,7 @@ import { RouterModule } from '@angular/router';
 import { SharedUiChartModule } from '@coding-challenge/shared/ui/chart';
 import { StocksComponent } from './stocks/stocks.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { SharedUiDatepickertModule } from '../../../../shared/ui/datepicker/src/lib/shared-ui-datepicker.module';
+import { SharedUiDatepickertModule } from '@coding-challenge/shared/ui/datepicker';
 
 @NgModule({
   imports: [

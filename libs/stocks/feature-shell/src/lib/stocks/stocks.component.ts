@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PriceQueryFacade } from '@coding-challenge/stocks/data-access-price-query';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { Subscription } from 'rxjs';
-import { DateRange } from '../datepicker/date-range';
+import { DateRange } from '@coding-challenge/shared/ui/datepicker';
 
 @Component({
   selector: 'coding-challenge-stocks',
