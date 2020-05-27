@@ -11,11 +11,9 @@ import { Subscription } from 'rxjs';
 })
 export class StocksComponent implements OnInit, OnDestroy {
   stockPickerForm: FormGroup;
-  symbol: string;
-  period: string;
-
   quotes$ = this.priceQuery.priceQueries$;
   formChanged: Subscription;
+  inProgress$ = this.priceQuery.requestInProgress$;
 
   timePeriods = [
     { viewValue: 'All available data', value: 'max' },
