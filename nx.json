@@ -9,10 +9,7 @@
   },
   "projects": {
     "stocks-data-access-price-query": {
-      "tags": [
-        "type:data-access",
-        "scope:stocks"
-      ]
+      "tags": ["type:data-access", "scope:stocks"]
     },
     "stocks": {
       "tags": []
@@ -21,10 +18,7 @@
       "tags": []
     },
     "stocks-feature-shell": {
-      "tags": [
-        "scope:stocks",
-        "type:feature"
-      ]
+      "tags": ["scope:stocks", "type:feature"]
     },
     "shared-ui-chart": {
       "tags": []
@@ -33,9 +27,19 @@
       "tags": []
     },
     "stocks-api": {
-      "tags": [
-        "platform:server"
-      ]
+      "tags": ["platform:server"]
+    },
+    "shared-ui-datepicker": {
+      "tags": []
+    },
+    "stocks-api-data-access-app-config": {
+      "tags": ["type:data-access", "scope:stocks-api", "platform:server"]
+    },
+    "stocks-api-data-access-routes": {
+      "tags": ["type:data-access", "scope:stocks-api", "platform:server"]
+    },
+    "stocks-api-data-access-methods": {
+      "tags": ["type:data-access", "scope:stocks-api", "platform:server"]
     }
   }
 }

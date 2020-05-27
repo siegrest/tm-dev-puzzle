@@ -1,0 +1,13 @@
+main {
+    padding: 0;
+}
+
+mat-card {
+    overflow-x: auto;
+}
+
+@media (min-width: 600px) {
+    main {
+        padding: 3em;
+    }
+}

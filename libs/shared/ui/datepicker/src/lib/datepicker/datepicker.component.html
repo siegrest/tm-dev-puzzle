@@ -1,0 +1,27 @@
+<form [formGroup]="datePickerForm">
+  <mat-form-field>
+    <mat-label>From date</mat-label>
+    <input (dateChange)="validateDate($event)" formControlName="from" [matDatepickerFilter]="dateRangeFilter" matInput
+      [matDatepicker]="fromDatePicker">
+    <mat-error>
+      <span *ngIf="isInvalidField('from')">
+        Please enter a valid date as MM.DD.YYYY
+      </span>
+    </mat-error>
+    <mat-datepicker-toggle matSuffix [for]="fromDatePicker"></mat-datepicker-toggle>
+    <mat-datepicker #fromDatePicker></mat-datepicker>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>To date</mat-label>
+    <input (dateChange)="validateDate($event)" formControlName="to" [matDatepickerFilter]="dateRangeFilter" matInput
+      [matDatepicker]="toDatePicker">
+    <mat-error>
+      <span *ngIf="isInvalidField('to')">
+        Please enter a valid date as MM.DD.YYYY
+      </span>
+    </mat-error>
+    <mat-datepicker-toggle matSuffix [for]="toDatePicker"></mat-datepicker-toggle>
+    <mat-datepicker #toDatePicker></mat-datepicker>
+  </mat-form-field>
+</form>
