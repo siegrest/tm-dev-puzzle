@@ -14,6 +14,11 @@ export const getSelectedSymbol = createSelector(
   (state: PriceQueryState) => state.selectedSymbol
 );
 
+export const getInProgress = createSelector(
+  getPriceQueryState,
+  (state: PriceQueryState) => state.inProgress
+);
+
 const { selectAll } = priceQueryAdapter.getSelectors();
 
 export const getAllPriceQueries = createSelector(
