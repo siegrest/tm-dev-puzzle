@@ -1,4 +1,4 @@
-import { getGreeting, getTimeInput } from '../support/app.po';
+import { getGreeting, getTimeInput, getButton } from '../support/app.po';
 
 describe('Hello Nx', () => {
   beforeEach(() => cy.visit('/'));
@@ -19,5 +19,13 @@ describe('Hello Nx', () => {
       .wait(100)
       .get('div.mat-select-value')
       .contains('One year');
+  });
+
+  it('presses the button', () => {
+    getButton().click();
+
+    getTimeInput()
+      .invoke('attr', 'aria-invalid')
+      .should('eq', 'true');
   });
 });
