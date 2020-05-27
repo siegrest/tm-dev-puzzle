@@ -5,8 +5,7 @@ import {
   MatInputModule,
   MatSelectModule,
   MatButtonModule,
-  MatProgressSpinnerModule,
-  MAT_PROGRESS_SPINNER_DEFAULT_OPTIONS
+  MatProgressSpinnerModule
 } from '@angular/material';
 import { RouterModule } from '@angular/router';
 import { SharedUiChartModule } from '@coding-challenge/shared/ui/chart';
@@ -27,14 +26,6 @@ import { ReactiveFormsModule } from '@angular/forms';
     SharedUiChartModule,
     MatProgressSpinnerModule
   ],
-  declarations: [StocksComponent],
-  providers: [
-    {
-      provide: MAT_PROGRESS_SPINNER_DEFAULT_OPTIONS,
-      useValue: {
-        _forceAnimations: true
-      }
-    }
-  ]
+  declarations: [StocksComponent]
 })
 export class StocksFeatureShellModule {}
