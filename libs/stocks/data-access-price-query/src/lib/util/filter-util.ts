@@ -1,4 +1,5 @@
 import { PriceQueryResponse } from '../+state/price-query.type';
+import { clearTime } from './date-util';
 
 export function filterResults(
   res: PriceQueryResponse[],
@@ -6,7 +7,7 @@ export function filterResults(
   to: Date | null
 ) {
   return res.filter(r => {
-    const date = new Date(r.date);
+    const date = clearTime(r.date);
 
     if (from && date < from) {
       return false;

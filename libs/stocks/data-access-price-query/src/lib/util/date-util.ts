@@ -11,8 +11,14 @@ export function getSmallestRange(from: Date | null): RANGE {
   return smallestPeriod ? smallestPeriod.range : RANGE.MAX;
 }
 
+export function clearTime(date: Date | string): Date {
+  const dateWithoutTime = new Date(date);
+  dateWithoutTime.setHours(0, 0, 0, 0);
+  return dateWithoutTime;
+} 
+
 function getDiffDaysFromNow(date: Date): number {
-  const now = new Date().setHours(0, 0, 0, 0);
-  const diff = Math.abs(now - date.getTime());
+  const now = clearTime(new Date());
+  const diff = Math.abs(now.getTime() - date.getTime());
   return Math.ceil(diff / (1000 * 60 * 60 * 24));
 }
